@@ -15,7 +15,7 @@ var obj={
     name:"hell"
 }
 
-var hell=fub.polyBind(obj);
+var hell=fub.bind(obj);
 
 console.log(hell());
 console.log(hell());
