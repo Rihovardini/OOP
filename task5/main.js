@@ -22,4 +22,4 @@ var multiply = curry(function(w, x, y, z) {
     return w*x*y*z;
   });
 
- console.log(sumFour(1)(3)(3)(3));
+ console.log(multiply(1)(3)(3)(3));
