@@ -30,6 +30,7 @@ Object.prototype.sumOfNumberProps=function(){
 console.log(obj.sumOfNumberProps());
 
 Object.prototype.objectMap=function(callback){
+    debugger
     let currentObj=this;
     for(let key in currentObj){
         if(currentObj.hasOwnProperty(key))
@@ -41,11 +42,12 @@ Object.prototype.objectMap=function(callback){
 let aMap={
     item1: 3,
     item2: -1
-  }.objectMap(function(el){
+  }
+  aMap.objectMap(function(el,obj){
     return el+1;
 });
 
-console.log(aMap.objectMap());
+console.log(aMap);
 
 Number.prototype.increment=function(inc){
     let number=this;
@@ -146,3 +148,5 @@ let arr2 = [3, [5, 19, 18], 6, [[7, 19, 31], [14, 18, 20]], 2];
 let res=arr2.innerMap((el)=>{
     return el+2;
 });
+
+console.log(res);
