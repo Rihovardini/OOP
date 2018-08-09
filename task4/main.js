@@ -1,8 +1,9 @@
 if(!Function.prototype.bind){
     Function.prototype.bind=function(context){
-        var func=this;
+        var func=this,
+        args = Array.prototype.slice.call(arguments,1);
         return function(){
-            return func.call(context);
+            return func.apply(context,args.concat(Array.prototype.slice.call(arguments)));
         }
     }
 }
