@@ -48,29 +48,41 @@ let aMap={
 });
 
 console.log(aMap);
-
-Number.prototype.increment=function(inc){
-    let number=this;
-    if(inc==undefined){
-       return ++number;
-    }else{
-        return number+=inc;
-    }
-}
+console.log("INCREMENT>>>>>")
+Number.prototype.increment=(function(){
+    let currNum=0,
+        counter=0;
+    
+    return function(num){
+        if(counter==0)
+            currNum=this;
+        currNum+=num?num:1;
+        counter++;
+        return currNum;
+    }    
+})();
 
  let a=1;
  console.log(a.increment());
+ console.log(a.increment());
+ console.log(a.increment());
 
-Number.prototype.decrement=function(inc){
-    let number=this;
-    if(inc==undefined){
-       return --number;
-    }else{
-        return number-=inc;
-    }
-}
+ Number.prototype.decrement=(function(){
+    let currNum=0,
+        counter=0;
+    
+    return function(num){
+        if(counter==0)
+            currNum=this;
+        currNum-=num?num:1;
+        counter++;
+        return currNum;
+    }    
+})();
 
  let b=1;
+ console.log(b.decrement(5));
+ console.log(b.decrement(5));
  console.log(b.decrement(5));
 
 Number.prototype.sumOfDigits=function(){
