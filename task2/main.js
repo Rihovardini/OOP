@@ -111,49 +111,23 @@ Array.prototype.sumOfFirstLast=function(){
  console.log(arr1.sumOfFirstLast());
 
 Array.prototype.innerMap=function(callback){
-    let newArray=[],
-        insideArr=[],
-        insideDwArr=[];
-    for(let i=0;i<this.length;i++){
-        //debugger
-        if(Array.isArray(this[i])){
-            insideArr=this[i].map(el=>{
-                if(Array.isArray(el)){
-                    insideDwArr=el.map(el=>{
-                        return callback(el);
-                    })
-                    return insideDwArr;
-                }
-                else{
-                    return callback(el);
-                }
-                
-            })
-            newArray[i]=insideArr;
-        }
-        else{
-        newArray[i]=callback(this[i],this);
+    debugger
+    let newArr=[];
+    function innerArr(arr,callback){
+        debugger
+        for(let i=0;i<arr.length;i++){
+            if(arr[i]instanceof Array){
+             innerArr(arr[i],callback);
+            }
+          else{
+           newArr.push(callback(arr[i])); 
+          }           
+       }
     }
-        
-    }
-    return newArray;
+  
+    innerArr(this,callback);
+    return newArr;
 }
-
-// Array.prototype.innerMap=function(callback){
-//     let newArr=[];
-//     function innerArr(arr,callback){
-//         return arr.map(callback);
-//     }
-//     for(let i=0;i<this.length;i++){
-//         if(Array.isArray(this[i])){
-//             newArr[i]=innerArr(this[i],callback);
-//             if(Array.isArray(this))
-//         }
-//         else{
-//             newArr[i]=callback(this[i],this);
-//         }
-//     }
-// }
 
 let arr2 = [3, [5, 19, 18], 6, [[7, 19, 31], [14, 18, 20]], 2];
 
