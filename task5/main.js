@@ -19,4 +19,4 @@ console.log(multiple(2)(3));
 console.log(multiple(7)(2)(3)); 
 console.log(multiple(1)(2)(3)(4)); 
 console.log(multiple(0)(1)(2)(3)(4)(5));
-console.log(multiply(1)(3)(3)(3));
+console.log(multiple(1)(3)(3)(3));
