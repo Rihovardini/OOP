@@ -1,16 +1,15 @@
-
-let form = document.forms.namedItem("fileinfo"),
-  users = [],
-  count = 0,
+const form = document.forms.namedItem("fileinfo"),
   tBody = document.createElement("tbody");
+let users = [],
+  count = 0;
 form.addEventListener("submit", e => {
   e.preventDefault();
-  let data = new FormData(form),
+  const data = new FormData(form),
     arrData = [];
   for (let value of data.entries()) {
     arrData.push(value);
   }
-  let user = new User(arrData);
+  const user = new User(arrData);
   users.push(user);
 
   createRow(user);
@@ -33,6 +32,7 @@ function createRow(value) {
   table.appendChild(tBody);
   count++;
 }
+
 class SuperUser {
   changeDataVisibility(tag) {
     if (this.isDataVisible == true) {
@@ -61,7 +61,7 @@ class User extends SuperUser {
 
 function createEventClick(tag) {
   tag.addEventListener("click", function(e) {
-    let index = tag.getAttribute("data-index");
+    const index = tag.getAttribute("data-index");
     users[index].changeDataVisibility(tag.children);
   });
 }
