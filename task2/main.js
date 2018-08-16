@@ -30,7 +30,7 @@ Object.prototype.sumOfNumberProps=function(){
 console.log(obj.sumOfNumberProps());
 
 Object.prototype.objectMap=function(callback){
-    debugger
+    
     let currentObj=this;
     for(let key in currentObj){
         if(currentObj.hasOwnProperty(key))
@@ -111,10 +111,10 @@ Array.prototype.sumOfFirstLast=function(){
  console.log(arr1.sumOfFirstLast());
 
 Array.prototype.innerMap=function(callback){
-    debugger
+    
     let newArr=[];
     function innerArr(arr,callback){
-        debugger
+        
         for(let i=0;i<arr.length;i++){
             if(arr[i]instanceof Array){
              innerArr(arr[i],callback);
