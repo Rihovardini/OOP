@@ -1,3 +1,4 @@
+
 const form = document.forms.namedItem("fileinfo"),
   tBody = document.createElement("tbody");
 let users = [],
@@ -9,10 +10,10 @@ form.addEventListener("submit", e => {
   for (let value of data.entries()) {
     arrData.push(value);
   }
-  const user = new User(arrData);
+  const user = new User(arrData),
+        formInputData=getDataFromForm(data);
   users.push(user);
-
-  createRow(user);
+  createRow(getDataFromForm(formInputData));
 });
 
 function createRow(value) {
@@ -20,11 +21,10 @@ function createRow(value) {
     table = document.querySelector("table");
   tr.setAttribute("data-index", count);
   tBody.appendChild(tr);
-  let arr = Object.keys(value);
-  arr.pop();
-  arr.forEach(key => {
+  
+  value.forEach(key => {
     const td = document.createElement("td");
-    td.textContent = value[key] ? value[key] : "Not found";
+    td.textContent = key ? key : "Not found";
     tr.appendChild(td);
   });
 
@@ -64,4 +64,12 @@ function createEventClick(tag) {
     const index = tag.getAttribute("data-index");
     users[index].changeDataVisibility(tag.children);
   });
+}
+
+function getDataFromForm(data){
+  let arr=[];
+  for (let value of data.entries()) {
+        arr.push(value[1]);
+  }
+  return arr;
 }
